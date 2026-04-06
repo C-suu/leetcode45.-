@@ -2,7 +2,6 @@
 
 <img width="1111" height="954" alt="image" src="https://github.com/user-attachments/assets/00284e2f-e1ad-4114-ae0e-34ccc1a30d54" />
 
-以下是针对《45. 跳跃游戏 II》这道题的详细拆解：
 
 ### （1）用白话文解释题目意思及生僻概念
 
@@ -88,4 +87,19 @@ class Solution:
 | **i = 2**<br>(对应值: 1) | `i = 2`<br>`cur_right = 2` | 从位置2最远到 `2+1=3`<br>`max(4, 3)` ➔ 维持 **`next_right = 4`** | `2 == 2` 为 **真** (True)<br>又到边界了，必须再次起跳 | 更新 `cur_right` ➔ **`4`**<br>步数 `ans` ➔ **`2`** | `next_right = max(...)`<br>`if i == cur_right:`<br>`cur_right = next_right`<br>`ans += 1` |
 | **i = 3**<br>(对应值: 1) | `i = 3`<br>`cur_right = 4` | 从位置3最远到 `3+1=4`<br>`max(4, 4)` ➔ 维持 **`next_right = 4`** | `3 == 4` 为 **假** (False)<br>还在当前边界内，继续探索 | / | `next_right = max(...)`<br>`if i == cur_right:` |
 | **结束** | 遍历完倒数第二个元素 | / | / | 最终返回结果 ➔ **`2`** | `return ans` |
+
+
+# 问题与答案
+
+```python
+怎么感觉看不到“返回到达 n - 1 的最小跳跃次数。”？
+这里面确实有curr_right是4，但是又不知道数组最后一个数是4啊?
+
+澄清一个常见的视觉巧合：下标 vs 数值
+在示例 [2, 3, 1, 1, 4] 中，产生了一个极其容易引发误导的巧合：
+数组的长度是 5，所以最后一个元素的下标是 5 - 1 = 4。
+同时，最后一个格子里的数值恰巧也是 4。
+代码中推演计算出的 cur_right = 4 和 next_right = 4，代表的是“最远能跳到下标为 4 的位置”，而不是说“看到了数值 4”。
+只要 cur_right 达到了 4（也就是 n - 1），就意味着已经覆盖了终点。
+```
 
