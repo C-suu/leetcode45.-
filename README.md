@@ -115,3 +115,6 @@ class Solution:
 只要 cur_right 达到了 4（也就是 n - 1），就意味着已经覆盖了终点。
 ```
 
+<img width="520" height="1114" alt="image" src="https://github.com/user-attachments/assets/61ae9cc6-8805-4d73-8269-8176a7e2c4a6" />
+
+
